@@ -22,13 +22,13 @@
 
 ### Dashboard
 <!-- Replace with your actual screenshot if the image filename differs -->
-![AegisOps Dashboard](docs/screenshots/dashboard.png)
+![AegisOps Dashboard](docs/screenshots/dashboard.jpeg)
 
 ### Incident Analysis
-![Incident Analysis](docs/screenshots/incident_analysis.png)
+![Incident Analysis](docs/screenshots/incident_analysis.jpeg)
 
 ### Security Guardrails
-![Security Guardrails](docs/screenshots/guardrails.png)
+![Security Guardrails](docs/screenshots/guardrails.jpeg)
 
 ---
 
