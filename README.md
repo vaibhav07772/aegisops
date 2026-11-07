@@ -1,252 +1,318 @@
-# 🛡️ AegisOps — AI-Powered SRE & Incident Response Platform
+# 🛡️ AegisOps — AI-Powered SRE & Autonomous Incident Response Platform
 
-> **An autonomous AI teammate for Site Reliability Engineering (SRE)** that detects infrastructure anomalies, investigates incidents using multi-agent LLM reasoning and internal runbooks, and recommends safe remediations with human approval.
+**An intelligent AI-powered Site Reliability Engineering platform that detects infrastructure anomalies, investigates incidents through multi-agent reasoning, retrieves relevant operational runbooks, and recommends safe remediation with mandatory human approval.**
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/FastAPI-Backend-009688?logo=fastapi&logoColor=white" />
-  <img src="https://img.shields.io/badge/LangGraph-Multi--Agent-blueviolet" />
-  <img src="https://img.shields.io/badge/Groq-gpt--oss--120b-orange" />
-  <img src="https://img.shields.io/badge/RAG-ChromaDB-green" />
-  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white" />
-  <img src="https://img.shields.io/badge/License-MIT-lightgrey" />
+  <strong>AI Agents · Anomaly Detection · Hybrid RAG · AI Security · Human-in-the-Loop · MLOps · Observability</strong>
 </p>
 
 <p align="center">
-  <b>AI Agents · Anomaly Detection · Hybrid RAG · LLM Security · Human-in-the-Loop · MLOps · Observability</b>
+  <img src="https://img.shields.io/badge/Python-3.11+-blue?logo=python" />
+  <img src="https://img.shields.io/badge/FastAPI-Backend-009688?logo=fastapi" />
+  <img src="https://img.shields.io/badge/LangGraph-Multi--Agent-orange" />
+  <img src="https://img.shields.io/badge/Groq-LLM-black" />
+  <img src="https://img.shields.io/badge/RAG-Hybrid%20Retrieval-purple" />
+  <img src="https://img.shields.io/badge/Docker-Supported-2496ED?logo=docker" />
+  <img src="https://img.shields.io/badge/Tests-66%20Passing-success" />
 </p>
 
 ---
 
-## 📸 Screenshots
+## 📸 Application Screenshots
 
 ### Dashboard
-![AegisOps Dashboard](docs/screenshots/dashboard.jpeg)
+<!-- Replace with your actual screenshot if the image filename differs -->
+![AegisOps Dashboard](docs/screenshots/dashboard.png)
 
 ### Incident Analysis
-![Incident Detail](docs/screenshots/incident-detail.jpeg)
+![Incident Analysis](docs/screenshots/incident_analysis.png)
 
 ### Security Guardrails
-![Guardrails Playground](docs/screenshots/guardrails.jpeg)
+![Security Guardrails](docs/screenshots/guardrails.png)
+
+---
 
 ## 📌 Overview
 
-AegisOps is an AI-powered Site Reliability Engineering (SRE) platform designed to automate infrastructure incident investigation and response.
+Modern infrastructure systems generate large volumes of metrics, logs, and traces. When an incident occurs, SRE engineers must investigate these signals, identify the root cause, consult internal documentation, and decide how to recover the affected services.
 
-Traditional incident management often requires engineers to manually inspect metrics, logs, traces, dashboards, and internal documentation. This process can be slow, especially during critical production incidents.
+This process can be time-consuming and operationally complex.
 
-AegisOps brings these capabilities together into one intelligent workflow.
+**AegisOps addresses this challenge by bringing Machine Learning, Generative AI, multi-agent orchestration, Retrieval-Augmented Generation, and security guardrails into one incident-response platform.**
 
-It uses:
+The system simulates an infrastructure environment, detects anomalies using Isolation Forest, investigates incidents through six specialized AI agents, and generates evidence-based remediation recommendations.
 
-- **Isolation Forest** for infrastructure anomaly detection.
-- **LangGraph** to orchestrate six specialized AI agents.
-- **Groq LLM (`gpt-oss-120b`)** for structured incident reasoning.
-- **Hybrid RAG** to retrieve relevant internal SRE runbooks.
-- **Five-layer security guardrails** to validate proposed actions.
-- **Human-in-the-loop approval** before remediation execution.
-- **Prometheus and MLflow** for monitoring and experiment tracking.
+Unlike fully autonomous execution systems, AegisOps requires human approval before executing a proposed remediation.
 
-The platform includes a simulated infrastructure environment with six microservices and multiple incident scenarios.
+### What AegisOps does
+
+1. Simulates infrastructure telemetry across multiple microservices.
+2. Detects unusual infrastructure behavior using Machine Learning.
+3. Investigates incidents through six specialized AI agents.
+4. Retrieves relevant SRE runbooks using Hybrid RAG.
+5. Identifies potential root causes using LLM reasoning.
+6. Validates remediation proposals through security guardrails.
+7. Requests human approval before remediation execution.
+8. Records execution outcomes and audit information.
+9. Tracks application and agent performance through observability tools.
+
+---
 
 ## 🎯 Problem Statement
 
-Infrastructure incidents can cause downtime, degraded performance, failed requests, and operational losses.
+Traditional incident response involves multiple manual activities:
 
-SRE teams typically need to:
+- Identifying abnormal infrastructure behavior.
+- Investigating CPU, memory, latency, and error metrics.
+- Analyzing application logs and request traces.
+- Identifying the root cause of an incident.
+- Searching operational runbooks.
+- Selecting an appropriate remediation.
+- Executing recovery procedures and verifying results.
 
-1. Identify unusual infrastructure behavior.
-2. Inspect metrics, logs, and traces.
-3. Find the root cause.
-4. Search internal runbooks.
-5. Decide on a safe remediation.
-6. Execute and monitor the recovery.
+AegisOps aims to reduce this investigation effort by creating an intelligent workflow that combines anomaly detection, multi-agent investigation, knowledge retrieval, security validation, and human oversight.
 
-These steps can consume significant engineering time.
-
-**AegisOps aims to reduce this manual investigation effort** by combining anomaly detection, AI agents, retrieval-augmented generation, security controls, and human approval into a unified incident-response workflow.
+---
 
 ## ✨ Key Features
 
-### 1. Intelligent Anomaly Detection
+### 1. Intelligent Infrastructure Anomaly Detection
 
-- Isolation Forest-based anomaly detection.
+Uses **Isolation Forest** to identify unusual infrastructure behavior.
+
+Key capabilities:
 - Baseline-aware feature engineering.
-- Rolling statistics and Z-score-based features.
-- Detection across simulated infrastructure services.
-- Supports multiple incident scenarios.
+- Rolling statistical features.
+- Z-score-based anomaly signals.
+- Detection across simulated microservices.
+- Support for multiple infrastructure incident scenarios.
 
-Features include:
+Engineered features include:
 
-- `value_ratio`
-- `zscore`
-- `rolling_mean_ratio`
-- `rolling_std_ratio`
-- `delta_zscore`
+| Feature | Purpose |
+|---|---|
+| `value_ratio` | Compares current values against baseline |
+| `zscore` | Measures deviation from normal behavior |
+| `rolling_mean_ratio` | Compares values against rolling averages |
+| `rolling_std_ratio` | Captures changes in variability |
+| `delta_zscore` | Measures abnormal changes over time |
 
 ### 2. Six-Agent AI Investigation Pipeline
 
-AegisOps uses LangGraph to coordinate six specialized agents.
+AegisOps uses **LangGraph** to orchestrate six specialized agents.
 
-| Agent | Responsibility |
+| AI Agent | Responsibility |
 |---|---|
 | Metric Agent | Investigates infrastructure metrics |
 | Log Agent | Analyzes application and system logs |
 | Trace Agent | Examines request traces |
-| Runbook Agent | Retrieves relevant internal documentation |
-| Reasoner Agent | Combines evidence and determines likely root cause |
-| Remediation Agent | Proposes a suitable corrective action |
+| Runbook Agent | Retrieves relevant operational documentation |
+| Reasoner Agent | Combines evidence and identifies the likely root cause |
+| Remediation Agent | Recommends a suitable corrective action |
 
-The agents work together to produce a structured incident analysis.
+The agents collaborate to generate structured incident analysis rather than relying on a single LLM response.
 
-### 3. Hybrid RAG System
+### 3. Hybrid Retrieval-Augmented Generation (RAG)
 
-AegisOps uses Retrieval-Augmented Generation (RAG) to ground incident reasoning in internal SRE documentation.
+The platform uses a hybrid retrieval pipeline to ground incident investigation in internal SRE documentation.
 
-**Retrieval pipeline:**
+**Retrieval workflow:**
 
-1. Runbook parsing
-2. BM25 keyword retrieval
-3. ChromaDB vector retrieval
-4. Reciprocal Rank Fusion (RRF)
-5. Cross-encoder reranking
-6. Relevant runbook context passed to the LLM
+```text
+SRE Runbook Documents
+        |
+        v
+   Document Parsing
+        |
+        v
+   BM25 Retrieval
+        |
+        +
+        |
+        v
+ ChromaDB Vector Search
+        |
+        v
+ Reciprocal Rank Fusion
+        |
+        v
+ Cross-Encoder Reranking
+        |
+        v
+ Relevant Runbook Context
+        |
+        v
+     LLM Reasoning
+```
 
-This helps the system connect incident evidence with relevant operational procedures.
+Components:
+- BM25 keyword retrieval.
+- ChromaDB vector database.
+- Sentence Transformers embeddings.
+- Reciprocal Rank Fusion (RRF).
+- Cross-encoder reranking.
+- Context-grounded LLM reasoning.
 
-### 4. Five-Layer AI Security
+### 4. Five-Layer AI Security Guardrails
 
-Security is a core part of the remediation workflow.
+Security is implemented at the remediation boundary to reduce the risk of unsafe AI-generated actions.
 
 | Layer | Security Mechanism |
 |---|---|
-| 1 | PII redaction |
-| 2 | Dangerous command blocker |
-| 3 | Safe command allowlist |
+| 1 | PII Redaction |
+| 2 | Dangerous Command Blocking |
+| 3 | Safe Command Allowlist |
 | 4 | Role-Based Access Control (RBAC) |
-| 5 | Prompt injection detection |
+| 5 | Prompt Injection Detection |
 
-Additional protections include:
-
-- Blocking dangerous shell commands.
-- Restricting permitted `kubectl` command patterns.
-- Detecting sensitive information.
-- Enforcing role-based permissions.
-- Identifying suspicious prompt instructions.
+Additional protections:
+- Sensitive information detection.
+- Dangerous shell command blocking.
+- Restricted Kubernetes command patterns.
+- Role-based authorization.
+- Suspicious prompt instruction detection.
 
 ### 5. Human-in-the-Loop Remediation
 
-AegisOps does not automatically execute proposed remediation actions.
+AegisOps separates remediation recommendation from execution.
 
-The workflow follows:
+```text
+Incident Investigation
+        |
+        v
+Remediation Proposal
+        |
+        v
+Security Validation
+        |
+        v
+Human Approval
+        |
+        +------ Reject
+        |          |
+        |          v
+        |      Audit Record
+        |
+        +------ Approve
+                   |
+                   v
+             Dry-Run Execution
+                   |
+                   v
+             Execution Result
+                   |
+                   v
+               Audit Trail
+```
 
-`pending → approved → executed`
-
-An incident can also be rejected with a recorded reason.
-
-Features:
-
+Capabilities:
 - Approval and rejection workflow.
 - Approver identity and timestamp.
-- Audit trail.
+- Execution audit trail.
 - Dry-run command execution.
 - Simulated Kubernetes execution.
 
-**Human approval remains mandatory before remediation execution.**
+**Important:** Human approval is mandatory before remediation execution.
 
 ### 6. Observability & MLOps
 
-- Prometheus metrics for application and agent monitoring.
-- MLflow experiment and model tracking.
-- Structured logging using Structlog.
-- LLM token and API cost tracking.
-- Agent execution latency monitoring.
-- Prompt version tracking.
+The platform integrates monitoring and experiment-tracking capabilities.
+
+| Component | Purpose |
+|---|---|
+| Prometheus | Application and agent metrics |
+| MLflow | Experiment and model tracking |
+| Structlog | Structured application logging |
+| Token Tracking | LLM token usage and API cost |
+| Latency Monitoring | Agent execution performance |
+| Prompt Versioning | Prompt tracking |
 
 ---
 
 ## 🏗️ System Architecture
 
 ```text
-             SIMULATED INFRASTRUCTURE
-       ┌───────────────────────────────────┐
-       │ Frontend · API · Auth · Order     │
-       │ Payment · PostgreSQL              │
-       └─────────────────┬─────────────────┘
-                         │
-                 Metrics / Logs / Traces
-                         │
-                         ▼
-              ┌────────────────────┐
-              │  Data Ingestion    │
-              │  SQLite Storage    │
-              └─────────┬──────────┘
-                        │
-                        ▼
-              ┌────────────────────┐
-              │ Isolation Forest   │
-              │ Anomaly Detection  │
-              └─────────┬──────────┘
-                        │
-                        ▼
-              ┌────────────────────┐
-              │ LangGraph Pipeline │
-              │                    │
-              │ 1. Metric Agent    │
-              │ 2. Log Agent       │
-              │ 3. Trace Agent     │
-              │ 4. Runbook Agent   │
-              │ 5. Reasoner Agent  │
-              │ 6. Remediation     │
-              └─────────┬──────────┘
-                        │
-              ┌─────────▼──────────┐
-              │ Groq LLM + Hybrid  │
-              │ RAG (ChromaDB)     │
-              └─────────┬──────────┘
-                        │
-                        ▼
-              ┌────────────────────┐
-              │ Security Guardrails│
-              │ PII · RBAC · CMD   │
-              │ Injection Checks   │
-              └─────────┬──────────┘
-                        │
-                        ▼
-              ┌────────────────────┐
-              │ Streamlit UI       │
-              │ Human Approval     │
-              └─────────┬──────────┘
-                        │
-                        ▼
-              ┌────────────────────┐
-              │ Dry-Run Execution  │
-              │ Audit Trail        │
-              └────────────────────┘
+              SIMULATED INFRASTRUCTURE
+       +----------------------------------+
+       | Frontend | API | Auth | Orders   |
+       | Payment  | PostgreSQL            |
+       +----------------+-----------------+
+                        |
+                        v
+              Metrics / Logs / Traces
+                        |
+                        v
+              +--------------------+
+              |   Data Ingestion   |
+              |   SQLite Storage   |
+              +---------+----------+
+                        |
+                        v
+              +--------------------+
+              |  Isolation Forest  |
+              | Anomaly Detection  |
+              +---------+----------+
+                        |
+                        v
+              +--------------------+
+              |  LangGraph Engine  |
+              |                    |
+              | 1. Metric Agent    |
+              | 2. Log Agent       |
+              | 3. Trace Agent     |
+              | 4. Runbook Agent   |
+              | 5. Reasoner Agent  |
+              | 6. Remediation     |
+              +---------+----------+
+                        |
+                        v
+              +--------------------+
+              | Groq LLM + Hybrid  |
+              | RAG / ChromaDB     |
+              +---------+----------+
+                        |
+                        v
+              +--------------------+
+              | Security Guardrails|
+              | PII / RBAC / CMD   |
+              | Injection Checks   |
+              +---------+----------+
+                        |
+                        v
+              +--------------------+
+              |   Streamlit UI     |
+              | Human Approval     |
+              +---------+----------+
+                        |
+                        v
+              +--------------------+
+              | Dry-Run Execution  |
+              |    Audit Trail     |
+              +--------------------+
 
-         Prometheus · MLflow · Structlog
+           Prometheus | MLflow | Structlog
 ```
 
-## 📊 Measured Results
+---
 
-The following figures are from the project's supplied six-scenario evaluation and test results.
+## 📊 Evaluation Results
+
+The following results are reported by the project's supplied six-scenario evaluation and automated test suite.
 
 | Evaluation Metric | Reported Result |
 |---|---:|
-| Category Accuracy | 100% (6/6 scenarios) |
-| Service Accuracy | 100% (6/6 scenarios) |
-| Metric Accuracy | 100% (6/6 scenarios) |
+| Incident Category Accuracy | 100% (6/6) |
+| Service Identification Accuracy | 100% (6/6) |
+| Metric Accuracy | 100% (6/6) |
 | RAG Precision | 100% |
 | Average End-to-End Latency | ~26.73 seconds |
-| Cost per Incident | ~$0.0011 |
-| Automated Tests | 66/66 passing |
+| Estimated Cost per Incident | ~$0.0011 |
+| Automated Tests | 66/66 Passing |
 | Guardrail Block Rate | 100% in tested cases |
 
-**Important:** These are results from the project's simulated scenarios and test environment. They should not be interpreted as independently validated production performance.
+### Incident Scenario Evaluation
 
-### Incident Evaluation
-
-| Scenario | Predicted Category | Result |
+| Scenario | Expected Classification | Result |
 |---|---|---|
 | Normal | Healthy | Passed |
 | Memory Leak | Memory | Passed |
@@ -255,22 +321,28 @@ The following figures are from the project's supplied six-scenario evaluation an
 | CPU Spike | CPU | Passed |
 | Error Cascade | Errors | Passed |
 
+<sub>Note: These results are based on the project's simulated scenarios and test environment. They are not independently validated production benchmarks. Latency and API cost may vary depending on the model, network, hardware, and execution environment.</sub>
+
+---
+
 ## 🧰 Technology Stack
 
 | Category | Technologies |
 |---|---|
-| Programming | Python 3.11+ |
+| Programming Language | Python 3.11+ |
 | Backend | FastAPI, Uvicorn |
-| AI Agents | LangGraph, LangChain |
+| Frontend | Streamlit, Plotly |
+| AI Orchestration | LangGraph, LangChain |
 | LLM | Groq — gpt-oss-120b |
 | Machine Learning | Scikit-learn, Isolation Forest |
-| RAG | ChromaDB, BM25, Sentence Transformers |
+| RAG | ChromaDB, BM25 |
+| Embeddings | Sentence Transformers |
 | Reranking | Cross-Encoder |
 | Data Validation | Pydantic v2 |
 | Database | SQLite, SQLAlchemy |
-| Frontend | Streamlit, Plotly |
-| Monitoring | Prometheus, Structlog |
+| Monitoring | Prometheus |
 | Experiment Tracking | MLflow |
+| Logging | Structlog |
 | Testing | Pytest |
 | Deployment | Docker, Docker Compose |
 
@@ -279,6 +351,8 @@ The following figures are from the project's supplied six-scenario evaluation an
 ## 🚀 Getting Started
 
 ### Prerequisites
+
+Make sure you have:
 
 - Python 3.11 or newer
 - Git
@@ -316,37 +390,43 @@ pip install -r requirements-dev.txt
 
 ### 4. Configure Environment Variables
 
-Create your environment file:
+Create your local environment file:
 
-```bash
-cp .env.example .env
-```
-
-On Windows Command Prompt, you can use:
+**Windows CMD:**
 
 ```cmd
 copy .env.example .env
 ```
 
-Add your Groq API key to `.env`:
+**Linux / macOS:**
+
+```bash
+cp .env.example .env
+```
+
+Open `.env` and configure your Groq API key:
 
 ```env
 GROQ_API_KEY=your_groq_api_key_here
 ```
 
-Get an API key from:
+Get your API key:
 
-https://console.groq.com/keys
+[Groq Console](https://console.groq.com/keys)
 
-**Never commit your `.env` file or expose API keys publicly.**
+**Security:** Never commit `.env` or expose API keys in source code, screenshots, logs, or public repositories.
 
 ### 5. Initialize Runbooks and Simulation Data
 
-Run the project bootstrap commands:
+Run the bootstrap and data preparation commands:
 
 ```bash
 python scripts/setup_runbooks.py --force
+```
 
+Generate the simulated infrastructure scenarios:
+
+```bash
 python scripts/run_simulation.py --scenario normal --duration 30 --speedup 10
 
 python scripts/run_simulation.py --scenario memory_leak --duration 30 --speedup 10
@@ -358,39 +438,47 @@ python scripts/run_simulation.py --scenario service_outage --duration 30 --speed
 python scripts/run_simulation.py --scenario cpu_spike --duration 30 --speedup 10
 
 python scripts/run_simulation.py --scenario error_cascade --duration 30 --speedup 10
+```
 
+Ingest telemetry and runbooks:
+
+```bash
 python scripts/ingest_data.py
 
 python scripts/ingest_runbooks.py --force
+```
 
+Train the anomaly detection model:
+
+```bash
 python scripts/train_anomaly.py
 ```
 
-### 6. Start the Application
-
-Start the FastAPI backend:
+### 6. Start the Backend
 
 ```bash
 python run.py
 ```
 
-API documentation:
+FastAPI documentation:
 
 http://localhost:8000/docs
 
-Open another terminal, activate the same virtual environment, and start Streamlit:
+### 7. Start the Frontend
+
+Open another terminal, activate the same virtual environment, and execute:
 
 ```bash
 streamlit run admin/app.py
 ```
 
-Dashboard:
+Open the dashboard:
 
 http://localhost:8501
 
-### 7. Run with Docker (Optional)
+### 8. Run with Docker (Optional)
 
-Configure `.env` with your Groq API key, then run:
+Configure `.env` with your Groq API key and run:
 
 ```bash
 docker-compose up --build
@@ -400,10 +488,10 @@ docker-compose up --build
 
 ## 🎬 Demo Workflow
 
-Try the following workflow in the application:
+Follow these steps to explore AegisOps:
 
 1. Open the Streamlit dashboard.
-2. Select an available incident from the incident queue.
+2. Select an incident from the incident queue.
 3. Click **Analyze this run**.
 4. Observe the six-agent investigation pipeline.
 5. Review the identified issue and retrieved runbook.
@@ -412,45 +500,51 @@ Try the following workflow in the application:
 8. Review the execution result and audit trail.
 9. Open the Guardrails page to test command validation.
 
-Example security checks:
+### Example Security Checks
+
+**Dangerous command:**
 
 ```bash
 rm -rf /var/data
 ```
 
-Expected: blocked by the dangerous command guardrail.
+Expected: Blocked by the dangerous-command guardrail.
+
+**Safe command:**
 
 ```bash
 kubectl get pods
 ```
 
-Expected: permitted when it matches the configured safe-command policy.
+Expected: Permitted when it matches the configured safe-command policy.
 
 ---
 
 ## 🧪 Testing
 
-Run the complete test suite:
+Run the complete automated test suite:
 
 ```bash
 pytest -v
 ```
 
-The supplied project results report **66 passing tests**.
+### Test Coverage
 
 | Test Module | Coverage | Tests |
 |---|---|---:|
-| `test_sim.py` | Telemetry simulation | 4 |
-| `test_ingestion.py` | SQLite ingestion | 3 |
-| `test_anomaly.py` | Anomaly detection | 5 |
-| `test_agents.py` | Agent orchestration | 4 |
-| `test_llm.py` | LLM integration and fallback | 9 |
-| `test_rag.py` | Runbook retrieval | 5 |
-| `test_security.py` | Security and guardrails | 30 |
-| `test_evaluation.py` | Evaluation metrics | 6 |
+| `test_sim.py` | Telemetry Simulation | 4 |
+| `test_ingestion.py` | SQLite Ingestion | 3 |
+| `test_anomaly.py` | Anomaly Detection | 5 |
+| `test_agents.py` | Agent Orchestration | 4 |
+| `test_llm.py` | LLM Integration and Fallback | 9 |
+| `test_rag.py` | Runbook Retrieval | 5 |
+| `test_security.py` | Security and Guardrails | 30 |
+| `test_evaluation.py` | Evaluation Metrics | 6 |
 | **Total** | | **66** |
 
-## 📈 Run Evaluation
+---
+
+## 📈 Run System Evaluation
 
 Execute:
 
@@ -458,44 +552,58 @@ Execute:
 python scripts/evaluate_system.py
 ```
 
-The evaluation script checks incident category prediction, service identification, metric consistency, RAG retrieval, latency, and API cost.
+The evaluation script checks:
+
+- Incident category prediction.
+- Service identification.
+- Metric consistency.
+- RAG retrieval quality.
+- End-to-end latency.
+- Estimated API cost.
 
 ---
 
 ## 🛡️ Security Design Principles
 
-AegisOps follows several important design principles:
+AegisOps follows five important engineering principles:
 
-- **Least Privilege:** Users receive permissions based on their assigned roles.
-- **Defense in Depth:** Multiple security layers validate inputs and actions.
-- **Human Oversight:** Proposed remediation requires human approval.
-- **Safe Execution:** Dry-run mode simulates commands rather than performing real infrastructure changes.
-- **Auditability:** Approval and execution events are recorded.
-- **Resilience:** Rule-based fallback supports operation when LLM reasoning is unavailable.
+| Principle | Implementation |
+|---|---|
+| Least Privilege | Role-based permissions |
+| Defense in Depth | Multiple security validation layers |
+| Human Oversight | Approval before remediation |
+| Safe Execution | Dry-run and simulated execution |
+| Auditability | Recorded approval and execution events |
+
+The system also provides rule-based fallback behavior when LLM reasoning is unavailable.
 
 ---
 
 ## 💡 Key Engineering Decisions
 
-### 1. LLM + Rule-Based Fallback
+### 1. Hybrid Retrieval Instead of Vector Search Alone
+
+Combining BM25 keyword search with vector retrieval helps retrieve runbooks using exact operational terms as well as semantic similarity.
+
+### 2. Multi-Agent Investigation
+
+Separating metric, log, trace, retrieval, reasoning, and remediation responsibilities makes the investigation workflow modular and easier to evaluate.
+
+### 3. LLM with Rule-Based Fallback
 
 LLM services can fail or become unavailable. A rule-based fallback provides an alternative inference path when LLM reasoning cannot be completed.
 
-### 2. Hybrid Retrieval Instead of Vector Search Alone
+### 4. Structured LLM Outputs
 
-Combining BM25 keyword search with vector retrieval helps retrieve runbooks using both exact operational terms and semantic similarity.
+Pydantic validation helps validate structured model responses and normalize outputs before downstream processing.
 
-### 3. Structured LLM Outputs
+### 5. Human Approval Before Remediation
 
-Pydantic validation is used to validate structured JSON responses and normalize outputs before downstream processing.
+The system separates recommendation from execution to reduce the risk of blindly executing AI-generated commands.
 
-### 4. Human Approval Before Remediation
+### 6. Security at the Action Boundary
 
-The remediation workflow separates recommendation from execution. This reduces the risk of blindly executing AI-generated commands.
-
-### 5. Security at the Action Boundary
-
-Proposed commands are checked against security policies before they reach the execution workflow.
+Proposed commands are checked against security policies before reaching the execution workflow.
 
 ---
 
@@ -504,70 +612,84 @@ Proposed commands are checked against security policies before they reach the ex
 ```text
 aegisops/
 │
-├── app/
-│   ├── agents/             # Six-agent LangGraph pipeline
-│   ├── api/                # FastAPI routes and endpoints
-│   ├── evaluation/         # Ground truth and evaluation
-│   ├── llm/                # Groq client, prompts and schemas
-│   ├── ml/                 # Isolation Forest and features
-│   ├── pipeline/           # Telemetry ingestion
-│   ├── rag/                # Hybrid retrieval and runbooks
-│   ├── security/           # Security guardrails
-│   ├── storage/            # Database models and repositories
-│   └── monitoring/         # Prometheus metrics
+├── admin/
+│   ├── pages/                  # Dashboard and security pages
+│   └── app.py                  # Streamlit application
 │
-├── admin/                  # Streamlit dashboard
-├── sim/                    # Infrastructure simulator
-├── scripts/                # Setup, training and evaluation
-├── tests/                  # Automated tests
-├── data/runbooks/          # SRE runbook documents
-├── docs/screenshots/       # Project screenshots
+├── app/
+│   ├── agents/                 # Six-agent LangGraph pipeline
+│   ├── api/                    # FastAPI routes and endpoints
+│   ├── evaluation/             # Ground truth and evaluation
+│   ├── llm/                    # Groq client, prompts and schemas
+│   ├── ml/                     # Isolation Forest and features
+│   ├── pipeline/               # Telemetry ingestion
+│   ├── rag/                    # Hybrid retrieval and runbooks
+│   ├── security/               # Security guardrails
+│   ├── storage/                # Database models and repositories
+│   └── monitoring/             # Prometheus metrics
+│
+├── data/
+│   └── runbooks/               # Internal SRE runbook documents
+│
+├── docs/
+│   └── screenshots/            # Application screenshots
+│
+├── scripts/                    # Setup, training and evaluation
+├── sim/                        # Infrastructure simulator
+├── tests/                      # Automated test suite
 │
 ├── Dockerfile
 ├── docker-compose.yml
-├── requirements-dev.txt
+├── .dockerignore
 ├── .env.example
-├── run.py
-└── README.md
+├── .gitignore
+├── pyproject.toml
+├── requirements.txt
+├── requirements-dev.txt
+├── pytest.ini
+└── run.py
 ```
 
 ---
 
 ## 🚧 Limitations & Future Improvements
 
-Potential next steps for the project include:
+AegisOps currently operates with simulated infrastructure and dry-run remediation.
+
+Potential improvements:
 
 - Integration with real Kubernetes clusters.
 - Real Prometheus and Grafana infrastructure telemetry.
 - Production-grade persistent incident storage.
 - More diverse real-world incident datasets.
-- Expanded evaluation across larger scenario sets.
+- Expanded evaluation across larger incident datasets.
 - Additional authentication and authorization integrations.
-- Deployment to a cloud environment.
-- More advanced incident correlation and root-cause analysis.
+- Cloud deployment and scalable infrastructure.
+- Advanced incident correlation and root-cause analysis.
+- Real infrastructure recovery verification.
 
-The current project uses simulated infrastructure and dry-run remediation. It should not be treated as a production incident-response system without additional testing, security review, and operational integrations.
+The project should not be treated as a production incident-response system without additional testing, security review, and operational integrations.
 
 ---
 
 ## 🧠 What This Project Demonstrates
 
-AegisOps demonstrates practical engineering skills across several AI and software domains:
+AegisOps showcases practical engineering experience across multiple AI and software engineering domains.
 
-- Python backend engineering.
-- Machine Learning and anomaly detection.
-- Generative AI and LLM integration.
-- Multi-agent systems using LangGraph.
-- Retrieval-Augmented Generation (RAG).
-- Hybrid search and reranking.
-- Structured output validation.
-- AI security and prompt injection defense.
-- Human-in-the-loop workflows.
-- MLOps and experiment tracking.
-- Monitoring and observability.
-- API development using FastAPI.
-- Docker-based application packaging.
-- Automated testing and evaluation.
+- Python Backend Engineering
+- Machine Learning and Anomaly Detection
+- Generative AI and LLM Integration
+- Multi-Agent Systems with LangGraph
+- Retrieval-Augmented Generation (RAG)
+- Hybrid Search and Reranking
+- Structured LLM Output Validation
+- AI Security and Prompt Injection Defense
+- Human-in-the-Loop Workflows
+- MLOps and Experiment Tracking
+- Monitoring and Observability
+- REST API Development with FastAPI
+- Docker-Based Application Packaging
+- Automated Testing and Evaluation
 
 ---
 
@@ -578,18 +700,18 @@ AegisOps demonstrates practical engineering skills across several AI and softwar
 Aspiring AI/ML Engineer | GenAI & Agentic AI Developer
 
 - GitHub: [@vaibhav07772](https://github.com/vaibhav07772)
-- Project: [AegisOps](https://github.com/vaibhav07772/aegisops)
+- Project Repository: [AegisOps](https://github.com/vaibhav07772/aegisops)
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+Add a `LICENSE` file to the repository before declaring a specific open-source license. Until then, the project's license is not explicitly specified.
 
 ---
 
 <p align="center">
-  <b>Built with ❤️, Python, LangGraph, FastAPI and Groq.</b>
-  <br/>
-  <i>Making incident response smarter, safer and faster.</i>
+  <strong>Built with ❤️ using Python, LangGraph, FastAPI, Groq and Machine Learning.</strong>
+  <br />
+  Making incident response smarter, safer and more intelligent.
 </p>
