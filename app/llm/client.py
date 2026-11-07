@@ -16,10 +16,10 @@ logger = structlog.get_logger("llm.client")
 
 T = TypeVar("T", bound=BaseModel)
 
-# Approximate Groq pricing (USD per 1M tokens). Adjust as needed.
+# Approximate Groq pricing (USD per 1M tokens).
 GROQ_PRICING = {
     "llama-3.1-8b-instant": {"input": 0.05, "output": 0.08},
-    "llama-3.3-70b-versatile": {"input": 0.59, "output": 0.79},  # may be deprecated
+    "llama-3.3-70b-versatile": {"input": 0.59, "output": 0.79},
     "openai/gpt-oss-120b": {"input": 0.15, "output": 0.75},
     "openai/gpt-oss-20b": {"input": 0.075, "output": 0.30},
     "meta-llama/llama-4-scout-17b-16e-instruct": {"input": 0.11, "output": 0.34},
@@ -32,7 +32,7 @@ class LLMError(Exception):
 
 
 class LLMClient:
-    """Thin wrapper around Groq with structured output + observability."""
+    """Thin wrapper around Groq with structured output + cache + observability."""
 
     def __init__(self) -> None:
         settings = get_settings()
@@ -54,18 +54,43 @@ class LLMClient:
         schema: Type[T],
         system_prompt: str | None = None,
         prompt_version: str = "v1",
+        use_cache: bool = True,
     ) -> tuple[T, dict]:
         """
         Call LLM, parse JSON into `schema`, retry on failure.
-        Returns (parsed_output, usage_info). Raises LLMError on persistent failure.
+        Returns (parsed_output, usage_info).
         """
         if not self.is_available:
             raise LLMError("GROQ_API_KEY not configured")
 
+        sys_prompt = system_prompt or ""
+        cache_key_prompt = f"SCHEMA:{schema.__name__}\n{prompt}"
+
+        # 1. Check Semantic Cache
+        if use_cache:
+            try:
+                from app.llm.cache import get_cache
+                cached_resp = get_cache().get(cache_key_prompt, sys_prompt)
+                if cached_resp:
+                    parsed = schema.model_validate_json(cached_resp)
+                    return parsed, {
+                        "model": "cache",
+                        "input_tokens": 0,
+                        "output_tokens": 0,
+                        "total_tokens": 0,
+                        "cost_usd": 0.0,
+                        "latency_s": 0.01,
+                        "prompt_version": prompt_version,
+                        "cached": True,
+                    }
+            except Exception as e:
+                logger.warning("cache_check_failed", error=str(e)[:100])
+
+        # 2. LLM Call
         client = Groq(api_key=self.api_key, timeout=self.timeout)
         messages: list[dict] = []
-        if system_prompt:
-            messages.append({"role": "system", "content": system_prompt})
+        if sys_prompt:
+            messages.append({"role": "system", "content": sys_prompt})
         messages.append({"role": "user", "content": prompt})
 
         last_error: Exception | None = None
@@ -90,7 +115,16 @@ class LLMClient:
 
                 usage = self._record_usage(resp, elapsed, prompt_version)
                 logger.info("llm_complete", attempt=attempt, **usage)
-                return parsed, usage
+
+                # 3. Save to Cache
+                if use_cache:
+                    try:
+                        from app.llm.cache import get_cache
+                        get_cache().set(cache_key_prompt, sys_prompt, content)
+                    except Exception as e:
+                        logger.warning("cache_save_failed", error=str(e)[:100])
+
+                return parsed, {**usage, "cached": False}
 
             except (json.JSONDecodeError, ValidationError) as e:
                 last_error = e

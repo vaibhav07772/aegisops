@@ -74,6 +74,13 @@ llm_cost_usd_total = Counter(
     ["model"],
 )
 
+# === LLM Cache ===
+llm_cache_total = Counter(
+    "aegisops_llm_cache_total",
+    "Semantic cache results",
+    ["result"],  # hit / miss / miss_expired
+)
+
 # === Guardrails ===
 guardrail_blocks_total = Counter(
     "aegisops_guardrail_blocks_total",
