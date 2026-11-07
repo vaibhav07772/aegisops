@@ -1,9 +1,9 @@
-# 🛡️ AegisOps — AI-Powered SRE & Autonomous Incident Response Platform
+﻿# ðŸ›¡ï¸ AegisOps â€” AI-Powered SRE & Autonomous Incident Response Platform
 
 **An intelligent AI-powered Site Reliability Engineering platform that detects infrastructure anomalies, investigates incidents through multi-agent reasoning, retrieves relevant operational runbooks, and recommends safe remediation with mandatory human approval.**
 
 <p align="center">
-  <strong>AI Agents · Anomaly Detection · Hybrid RAG · AI Security · Human-in-the-Loop · MLOps · Observability</strong>
+  <strong>AI Agents Â· Anomaly Detection Â· Hybrid RAG Â· AI Security Â· Human-in-the-Loop Â· MLOps Â· Observability</strong>
 </p>
 
 <p align="center">
@@ -18,21 +18,21 @@
 
 ---
 
-## 📸 Application Screenshots
+## ðŸ“¸ Application Screenshots
 
 ### Dashboard
 <!-- Replace with your actual screenshot if the image filename differs -->
 ![AegisOps Dashboard](docs/screenshots/dashboard.jpeg)
 
 ### Incident Analysis
-![Incident Analysis](docs/screenshots/incident_analysis.jpeg)
+![Incident Analysis](docs/screenshots/incident-detail.jpeg)
 
 ### Security Guardrails
 ![Security Guardrails](docs/screenshots/guardrails.jpeg)
 
 ---
 
-## 📌 Overview
+## ðŸ“Œ Overview
 
 Modern infrastructure systems generate large volumes of metrics, logs, and traces. When an incident occurs, SRE engineers must investigate these signals, identify the root cause, consult internal documentation, and decide how to recover the affected services.
 
@@ -58,7 +58,7 @@ Unlike fully autonomous execution systems, AegisOps requires human approval befo
 
 ---
 
-## 🎯 Problem Statement
+## ðŸŽ¯ Problem Statement
 
 Traditional incident response involves multiple manual activities:
 
@@ -74,7 +74,7 @@ AegisOps aims to reduce this investigation effort by creating an intelligent wor
 
 ---
 
-## ✨ Key Features
+## âœ¨ Key Features
 
 ### 1. Intelligent Infrastructure Anomaly Detection
 
@@ -229,7 +229,7 @@ The platform integrates monitoring and experiment-tracking capabilities.
 
 ---
 
-## 🏗️ System Architecture
+## ðŸ—ï¸ System Architecture
 
 ```text
               SIMULATED INFRASTRUCTURE
@@ -295,7 +295,7 @@ The platform integrates monitoring and experiment-tracking capabilities.
 
 ---
 
-## 📊 Evaluation Results
+## ðŸ“Š Evaluation Results
 
 The following results are reported by the project's supplied six-scenario evaluation and automated test suite.
 
@@ -325,7 +325,7 @@ The following results are reported by the project's supplied six-scenario evalua
 
 ---
 
-## 🧰 Technology Stack
+## ðŸ§° Technology Stack
 
 | Category | Technologies |
 |---|---|
@@ -333,7 +333,7 @@ The following results are reported by the project's supplied six-scenario evalua
 | Backend | FastAPI, Uvicorn |
 | Frontend | Streamlit, Plotly |
 | AI Orchestration | LangGraph, LangChain |
-| LLM | Groq — gpt-oss-120b |
+| LLM | Groq â€” gpt-oss-120b |
 | Machine Learning | Scikit-learn, Isolation Forest |
 | RAG | ChromaDB, BM25 |
 | Embeddings | Sentence Transformers |
@@ -348,7 +348,7 @@ The following results are reported by the project's supplied six-scenario evalua
 
 ---
 
-## 🚀 Getting Started
+## ðŸš€ Getting Started
 
 ### Prerequisites
 
@@ -486,7 +486,7 @@ docker-compose up --build
 
 ---
 
-## 🎬 Demo Workflow
+## ðŸŽ¬ Demo Workflow
 
 Follow these steps to explore AegisOps:
 
@@ -520,7 +520,7 @@ Expected: Permitted when it matches the configured safe-command policy.
 
 ---
 
-## 🧪 Testing
+## ðŸ§ª Testing
 
 Run the complete automated test suite:
 
@@ -544,7 +544,7 @@ pytest -v
 
 ---
 
-## 📈 Run System Evaluation
+## ðŸ“ˆ Run System Evaluation
 
 Execute:
 
@@ -563,7 +563,7 @@ The evaluation script checks:
 
 ---
 
-## 🛡️ Security Design Principles
+## ðŸ›¡ï¸ Security Design Principles
 
 AegisOps follows five important engineering principles:
 
@@ -579,7 +579,7 @@ The system also provides rule-based fallback behavior when LLM reasoning is unav
 
 ---
 
-## 💡 Key Engineering Decisions
+## ðŸ’¡ Key Engineering Decisions
 
 ### 1. Hybrid Retrieval Instead of Vector Search Alone
 
@@ -607,52 +607,52 @@ Proposed commands are checked against security policies before reaching the exec
 
 ---
 
-## 📁 Project Structure
+## ðŸ“ Project Structure
 
 ```text
 aegisops/
-│
-├── admin/
-│   ├── pages/                  # Dashboard and security pages
-│   └── app.py                  # Streamlit application
-│
-├── app/
-│   ├── agents/                 # Six-agent LangGraph pipeline
-│   ├── api/                    # FastAPI routes and endpoints
-│   ├── evaluation/             # Ground truth and evaluation
-│   ├── llm/                    # Groq client, prompts and schemas
-│   ├── ml/                     # Isolation Forest and features
-│   ├── pipeline/               # Telemetry ingestion
-│   ├── rag/                    # Hybrid retrieval and runbooks
-│   ├── security/               # Security guardrails
-│   ├── storage/                # Database models and repositories
-│   └── monitoring/             # Prometheus metrics
-│
-├── data/
-│   └── runbooks/               # Internal SRE runbook documents
-│
-├── docs/
-│   └── screenshots/            # Application screenshots
-│
-├── scripts/                    # Setup, training and evaluation
-├── sim/                        # Infrastructure simulator
-├── tests/                      # Automated test suite
-│
-├── Dockerfile
-├── docker-compose.yml
-├── .dockerignore
-├── .env.example
-├── .gitignore
-├── pyproject.toml
-├── requirements.txt
-├── requirements-dev.txt
-├── pytest.ini
-└── run.py
+â”‚
+â”œâ”€â”€ admin/
+â”‚   â”œâ”€â”€ pages/                  # Dashboard and security pages
+â”‚   â””â”€â”€ app.py                  # Streamlit application
+â”‚
+â”œâ”€â”€ app/
+â”‚   â”œâ”€â”€ agents/                 # Six-agent LangGraph pipeline
+â”‚   â”œâ”€â”€ api/                    # FastAPI routes and endpoints
+â”‚   â”œâ”€â”€ evaluation/             # Ground truth and evaluation
+â”‚   â”œâ”€â”€ llm/                    # Groq client, prompts and schemas
+â”‚   â”œâ”€â”€ ml/                     # Isolation Forest and features
+â”‚   â”œâ”€â”€ pipeline/               # Telemetry ingestion
+â”‚   â”œâ”€â”€ rag/                    # Hybrid retrieval and runbooks
+â”‚   â”œâ”€â”€ security/               # Security guardrails
+â”‚   â”œâ”€â”€ storage/                # Database models and repositories
+â”‚   â””â”€â”€ monitoring/             # Prometheus metrics
+â”‚
+â”œâ”€â”€ data/
+â”‚   â””â”€â”€ runbooks/               # Internal SRE runbook documents
+â”‚
+â”œâ”€â”€ docs/
+â”‚   â””â”€â”€ screenshots/            # Application screenshots
+â”‚
+â”œâ”€â”€ scripts/                    # Setup, training and evaluation
+â”œâ”€â”€ sim/                        # Infrastructure simulator
+â”œâ”€â”€ tests/                      # Automated test suite
+â”‚
+â”œâ”€â”€ Dockerfile
+â”œâ”€â”€ docker-compose.yml
+â”œâ”€â”€ .dockerignore
+â”œâ”€â”€ .env.example
+â”œâ”€â”€ .gitignore
+â”œâ”€â”€ pyproject.toml
+â”œâ”€â”€ requirements.txt
+â”œâ”€â”€ requirements-dev.txt
+â”œâ”€â”€ pytest.ini
+â””â”€â”€ run.py
 ```
 
 ---
 
-## 🚧 Limitations & Future Improvements
+## ðŸš§ Limitations & Future Improvements
 
 AegisOps currently operates with simulated infrastructure and dry-run remediation.
 
@@ -672,7 +672,7 @@ The project should not be treated as a production incident-response system witho
 
 ---
 
-## 🧠 What This Project Demonstrates
+## ðŸ§  What This Project Demonstrates
 
 AegisOps showcases practical engineering experience across multiple AI and software engineering domains.
 
@@ -693,7 +693,7 @@ AegisOps showcases practical engineering experience across multiple AI and softw
 
 ---
 
-## 👨‍💻 Author
+## ðŸ‘¨â€ðŸ’» Author
 
 **Vaibhav Singh**
 
@@ -704,14 +704,14 @@ Aspiring AI/ML Engineer | GenAI & Agentic AI Developer
 
 ---
 
-## 📄 License
+## ðŸ“„ License
 
 Add a `LICENSE` file to the repository before declaring a specific open-source license. Until then, the project's license is not explicitly specified.
 
 ---
 
 <p align="center">
-  <strong>Built with ❤️ using Python, LangGraph, FastAPI, Groq and Machine Learning.</strong>
+  <strong>Built with â¤ï¸ using Python, LangGraph, FastAPI, Groq and Machine Learning.</strong>
   <br />
   Making incident response smarter, safer and more intelligent.
 </p>
