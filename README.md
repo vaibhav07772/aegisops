@@ -1,4 +1,4 @@
-# 🛡️ AegisOps — AI-Powered SRE & Autonomous Incident Response Platform
+﻿# 🛡️ AegisOps — AI-Powered SRE & Autonomous Incident Response Platform
 
 **An intelligent AI-powered Site Reliability Engineering platform that detects infrastructure anomalies, investigates incidents through multi-agent reasoning, retrieves relevant operational runbooks, and recommends safe remediation with mandatory human approval.**
 
@@ -30,6 +30,9 @@
 ### Security Guardrails
 ![Security Guardrails](docs/screenshots/guardrails.jpeg)
 
+### System Analytics
+![System Analytics](docs/screenshots/analytics.jpeg)
+*Live Prometheus analytics — LLM cost, cache hit rate, guardrail blocks.*
 ---
 
 ## 📌 Overview

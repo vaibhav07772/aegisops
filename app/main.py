@@ -1,5 +1,6 @@
 """AegisOps FastAPI application."""
 
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -28,6 +29,15 @@ settings = get_settings()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     init_db()
+    
+    # Check LangSmith Tracing status (LangChain auto-reads these env vars)
+    langsmith_enabled = os.environ.get("LANGCHAIN_TRACING_V2", "").lower() == "true"
+    if langsmith_enabled:
+        project = os.environ.get("LANGCHAIN_PROJECT", "default")
+        logger.info("langsmith_tracing_enabled", project=project)
+    else:
+        logger.info("langsmith_tracing_disabled")
+
     logger.info(
         "aegisops_startup",
         version=settings.app_version,
@@ -81,6 +91,7 @@ async def home():
           <span class="tag">RAG</span>
           <span class="tag">Guardrails</span>
           <span class="tag">Prometheus</span>
+          <span class="tag">LangSmith</span>
         </div>
         <ul>
           <li><a href="/docs">API Docs (Swagger)</a></li>
