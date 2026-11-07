@@ -3,10 +3,6 @@
 **An intelligent AI-powered Site Reliability Engineering platform that detects infrastructure anomalies, investigates incidents through multi-agent reasoning, retrieves relevant operational runbooks, and recommends safe remediation with mandatory human approval.**
 
 <p align="center">
-  <strong>AI Agents · Anomaly Detection · Hybrid RAG · AI Security · Human-in-the-Loop · MLOps · Observability</strong>
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/Python-3.11+-blue?logo=python" />
   <img src="https://img.shields.io/badge/FastAPI-Backend-009688?logo=fastapi" />
   <img src="https://img.shields.io/badge/LangGraph-Multi--Agent-orange" />
@@ -14,6 +10,7 @@
   <img src="https://img.shields.io/badge/RAG-Hybrid%20Retrieval-purple" />
   <img src="https://img.shields.io/badge/Docker-Supported-2496ED?logo=docker" />
   <img src="https://img.shields.io/badge/Tests-66%20Passing-success" />
+  <img src="https://github.com/vaibhav07772/aegisops/actions/workflows/ci.yml/badge.svg" alt="CI Status" />
 </p>
 
 ---

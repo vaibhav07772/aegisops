@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Test & Lint (Python 3.11)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Cache ML models
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-${{ runner.os }}-minilm-l6
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Lint with Ruff
+        run: ruff check app/ tests/ --output-format=github
+        continue-on-error: false
+
+      - name: Run test suite
+        env:
+          # CI doesn't call Groq — all LLM tests use mocks
+          GROQ_API_KEY: ""
+          USE_LLM_REASONER: "false"
+          RAG_ENABLED: "false"
+          ENVIRONMENT: "ci"
+        run: |
+          pytest tests/ -v --tb=short
+
+      - name: Verify app imports
+        run: |
+          python -c "from app.main import app; print(f'App loaded: {app.title} v{app.version}')"
