@@ -1,0 +1,30 @@
+services:
+  # 1. FastAPI Backend
+  - type: web
+    name: aegisops-api
+    env: docker
+    dockerCommand: api
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false  # Render will ask you for this securely
+      - key: ENVIRONMENT
+        value: production
+      - key: USE_LLM_REASONER
+        value: "true"
+      - key: RAG_ENABLED
+        value: "true"
+
+  # 2. Streamlit Frontend
+  - type: web
+    name: aegisops-ui
+    env: docker
+    dockerCommand: ui
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      # Automatically grabs the API URL and prefixes it with https://
+      - key: AEGISOPS_API
+        fromService:
+          type: web
+          name: aegisops-api
+          property: host

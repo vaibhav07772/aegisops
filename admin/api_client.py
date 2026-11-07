@@ -5,7 +5,14 @@ import os
 
 import httpx
 
-BASE_URL = os.environ.get("AEGISOPS_API", "http://127.0.0.1:8000")
+# --- Cloud-Ready URL handling ---
+# Render provides the hostname without the scheme (e.g., aegisops-api-xyz.onrender.com).
+# We automatically add https:// if it's missing.
+_api_url = os.environ.get("AEGISOPS_API", "http://127.0.0.1:8000")
+if not _api_url.startswith("http"):
+    _api_url = f"https://{_api_url}"
+
+BASE_URL = _api_url
 TIMEOUT = 60.0
 
 
