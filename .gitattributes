@@ -1,0 +1,19 @@
+# Ensure shell scripts use LF (critical for Docker on Windows)
+*.sh text eol=lf
+scripts/*.sh text eol=lf
+
+# Python/Rust/Go — force LF
+*.py text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.ini text eol=lf
+
+# Markdown — leave as-is (Git handles)
+*.md text
+
+# Binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary

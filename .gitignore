@@ -1,0 +1,71 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+
+# === Virtual env ===
+.venv/
+venv/
+env/
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# === Env ===
+.env
+.env.local
+
+# === Testing ===
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# === Logs ===
+*.log
+
+# === MLflow ===
+mlruns/
+mlartifacts/
+mlflow.db
+
+# === Database ===
+data/*.db
+data/*.db-journal
+data/*.db-shm
+data/*.db-wal
+
+# === ML Models ===
+data/models/*
+!data/models/.gitkeep
+
+# === Data (runtime) ===
+data/raw/*
+!data/raw/.gitkeep
+data/metrics/*
+!data/metrics/.gitkeep
+data/logs/*
+!data/logs/.gitkeep
+data/traces/*
+!data/traces/.gitkeep
+data/runs/*
+!data/runs/.gitkeep
+
+# === Evaluation Reports ===
+data/evaluation_report.json
+
+# === DVC ===
+.dvc/tmp/
+.dvc/cache/
+*.tmp.dvc
+
+# ChromaDB runtime data
+data/chroma/

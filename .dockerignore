@@ -1,0 +1,59 @@
+# === Git ===
+.git
+.gitignore
+.gitattributes
+
+# === Python ===
+.venv
+venv
+env
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.egg-info
+build
+dist
+
+# === Testing / Linting ===
+.pytest_cache
+.ruff_cache
+.mypy_cache
+.coverage
+coverage.xml
+htmlcov
+
+# === IDE ===
+.vscode
+.idea
+*.swp
+.DS_Store
+
+# === Env (secrets) ===
+.env
+.env.local
+.env.*.local
+# keep .env.example
+!.env.example
+
+# === Runtime (regenerated inside container) ===
+mlruns
+mlartifacts
+mlflow.db
+*.log
+data/*.db
+data/*.db-*
+data/chroma
+data/models
+data/raw
+data/metrics
+data/logs
+data/traces
+data/runs
+data/evaluation_report.json
+
+# === Docs ===
+README.md
+docs
+*.md
+!data/runbooks/*.md
